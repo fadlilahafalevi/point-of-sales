@@ -25,22 +25,45 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">MASTER BARANG</h4>
+                  <button type="button" class="btn btn-success">CREATE</button>
                   <div class="table-responsive pt-3">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered data-table">
                       <thead>
                         <tr>
                           <th>ID</th>
                           <th>Kode Barang</th>
                           <th>Nama Barang</th>
                           <th>Satuan</th>
-                          <th>Harga</th>
+                          <th>Harga Pokok</th>
                           <th>Stock</th>
                           <th>Kategori</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        
+                        <?php 
+                          foreach ($data as $list_barang){
+                        ?>
+                          <tr>
+                              <td><?=$list_barang->id?></td>
+                              <td><?=$list_barang->barang_id?></td>
+                              <td><?=$list_barang->barang_nama?></td>
+                              <td><?=$list_barang->barang_satuan?></td>
+                              <td><?=$list_barang->barang_harpok?></td>
+                              <td><?=$list_barang->barang_stok?></td>
+                              <td><?=$list_barang->kategori_nama?></td>
+                              <td>
+                                <button type="button" class="btn btn-dark btn-rounded btn-icon" data-toggle="tooltip" title="Detail" style="padding: 0;">
+                                  <i class="mdi mdi-eye"></i>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-rounded btn-icon" data-toggle="tooltip" title="Edit" style="padding: 0;">
+                                  <i class="mdi mdi-pencil-box-outline"></i>
+                                </button>
+                              </td>
+                          </tr>
+                        <?php
+                        }
+                        ?>
                       </tbody>
                     </table>
                   </div>
@@ -69,5 +92,10 @@
   <script src="/point-of-sales/assets/js/data-table.js"></script>
   <script src="/point-of-sales/assets/js/jquery.dataTables.js"></script>
   <script src="/point-of-sales/assets/js/dataTables.bootstrap4.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){  
+      $('.data-table').dataTable();      
+    });
+  </script>
 </body>
 </html>
