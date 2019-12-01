@@ -6,8 +6,7 @@ class Controller_Login extends CI_Controller{
     }
 
     function index(){
-        $x['judul']="Silahkan Masuk..!";
-        $this->load->view('login',$x);
+        $this->load->view('login');
     }
 
     function cekuser(){
@@ -45,7 +44,7 @@ class Controller_Login extends CI_Controller{
     }
 
     function berhasillogin(){
-        redirect('welcome_message');
+        redirect('Controller_Dashboard');
     }
 
     function gagallogin(){
@@ -57,6 +56,7 @@ class Controller_Login extends CI_Controller{
     function logout(){
         $this->session->sess_destroy();
         $url=base_url('Controller_Login');
+        echo "string " . $url;;
         redirect($url);
     }
 }
