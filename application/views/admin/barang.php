@@ -12,12 +12,12 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="/point-of-sales/assets/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="/point-of-sales/assets/images/favicon.png" /> 
+  <link rel="shortcut icon" href="/point-of-sales/assets/images/favicon.png" />
 </head>
 <body>
-    <?php require 'application/views/header.php'; ?>
+    <?php require 'application/views/header.php';?>
   <div class="container-fluid page-body-wrapper">
-    <?php require 'application/views/sidebar.php'; ?>
+    <?php require 'application/views/sidebar.php';?>
     <div class="main-panel">
       <div class="content-wrapper">
         <div class="row">
@@ -41,9 +41,9 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php 
-                          foreach ($data as $list_barang){
-                        ?>
+                        <?php
+foreach ($data as $list_barang) {
+	?>
                           <tr>
                               <td><?=$list_barang->id?></td>
                               <td><?=$list_barang->barang_id?></td>
@@ -53,17 +53,16 @@
                               <td><?=$list_barang->barang_stok?></td>
                               <td><?=$list_barang->kategori_nama?></td>
                               <td>
-                                <button type="button" class="btn btn-dark btn-rounded btn-icon" data-toggle="tooltip" title="Detail" style="padding: 0;">
-                                  <i class="mdi mdi-eye"></i>
-                                </button>
-                                <button type="button" class="btn btn-primary btn-rounded btn-icon" data-toggle="tooltip" title="Edit" style="padding: 0;">
+                                <a class="btn btn-info" href="/point-of-sales/index.php/Controller_Barang/getBarang/<?=$list_barang->id?>" data-toggle="tooltip" title="Detail" style="padding: 4px">
+                                 <i class="mdi mdi-eye"></i>
+                                </a>
+                               <a class="btn btn-warning" href="/point-of-sales/index.php/Controller_Barang/getBarang/<?=$list_barang->id?>" data-toggle="tooltip" title="Edit" style="padding: 4px">
                                   <i class="mdi mdi-pencil-box-outline"></i>
-                                </button>
+                                </a>
                               </td>
                           </tr>
-                        <?php
-                        }
-                        ?>
+                        <?php }
+?>
                       </tbody>
                     </table>
                   </div>
@@ -93,8 +92,8 @@
   <script src="/point-of-sales/assets/js/jquery.dataTables.js"></script>
   <script src="/point-of-sales/assets/js/dataTables.bootstrap4.js"></script>
   <script type="text/javascript">
-    $(document).ready(function(){  
-      $('.data-table').dataTable();      
+    $(document).ready(function(){
+      $('.data-table').dataTable();
     });
   </script>
 </body>

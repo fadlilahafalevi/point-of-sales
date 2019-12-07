@@ -1,5 +1,5 @@
 <?php
-class M_Barang extends CI_Model{
+class M_Barang extends CI_Model {
 
 	// function hapus_barang($kode){
 	// 	$hsl=$this->db->query("DELETE FROM tbl_barang where barang_id='$kode'");
@@ -12,11 +12,11 @@ class M_Barang extends CI_Model{
 	// 	return $hsl;
 	// }
 
-	public function getAllBarang(){
+	public function getAllBarang() {
 		$this->db->select('*');
-        $this->db->from('tbl_barang');
+		$this->db->from('tbl_barang');
 		$this->db->join('tbl_kategori', 'tbl_barang.barang_kategori_id = tbl_kategori.kategori_id');
-        $query = $this->db->get();
+		$query = $this->db->get();
 		return $query->result();
 	}
 
@@ -26,24 +26,27 @@ class M_Barang extends CI_Model{
 	// 	return $hsl;
 	// }
 
-
-	// function get_barang($kobar){
-	// 	$hsl=$this->db->query("SELECT * FROM tbl_barang where barang_id='$kobar'");
-	// 	return $hsl;
-	// }
+	function getBarang($id) {
+		$this->db->select('*');
+		$this->db->from('tbl_barang');
+		$this->db->join('tbl_kategori', 'tbl_barang.barang_kategori_id = tbl_kategori.kategori_id');
+		$this->db->where('id', $id);
+		$query = $this->db->get();
+		return $query->result();
+	}
 
 	// function get_kobar(){
 	// 	$q = $this->db->query("SELECT MAX(RIGHT(barang_id,6)) AS kd_max FROM tbl_barang");
- //        $kd = "";
- //        if($q->num_rows()>0){
- //            foreach($q->result() as $k){
- //                $tmp = ((int)$k->kd_max)+1;
- //                $kd = sprintf("%06s", $tmp);
- //            }
- //        }else{
- //            $kd = "000001";
- //        }
- //        return "BR".$kd;
+	//        $kd = "";
+	//        if($q->num_rows()>0){
+	//            foreach($q->result() as $k){
+	//                $tmp = ((int)$k->kd_max)+1;
+	//                $kd = sprintf("%06s", $tmp);
+	//            }
+	//        }else{
+	//            $kd = "000001";
+	//        }
+	//        return "BR".$kd;
 	// }
 
 }
