@@ -1,10 +1,9 @@
 <?php 
 
-class Controller_Barang extends CI_Controller
-{
+class Controller_Barang extends CI_Controller{
 	function index(){
         $this->load->model('M_Barang');
-        
+
 		if($this->session->userdata('akses')=='1'){
 			$data['data']=$this->M_Barang->getAllBarang();
 			// $data['kat']=$this->m_kategori->tampil_kategori();

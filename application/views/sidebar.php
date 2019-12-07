@@ -13,35 +13,47 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="Controller_Supplier">
-        <i class="mdi mdi-truck menu-icon"></i>
-        <span class="menu-title">Supplier</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="Controller_Kategori">
-        <i class="mdi mdi-sitemap menu-icon"></i>
-        <span class="menu-title">Kategori</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="Controller_Barang">
-        <i class="mdi mdi-cube menu-icon"></i>
-        <span class="menu-title">Barang</span>
-      </a>
-    </li>
-    <li class="nav-item">
       <a class="nav-link" href="Controller_Penjualan">
         <i class="mdi mdi-cart menu-icon"></i>
-        <span class="menu-title">Penjualan</span>
+        <span class="menu-title">Penjualan Eceran</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="Controller_User">
-        <i class="mdi mdi-account menu-icon"></i>
-        <span class="menu-title">User</span>
+      <a class="nav-link" href="Controller_Grosir">
+        <i class="mdi mdi-cart menu-icon"></i>
+        <span class="menu-title">Penjualan Grosir</span>
       </a>
     </li>
+    <?php
+      if($this->session->userdata('akses')=='1'){
+    ?>
+      <li class="nav-item">
+        <a class="nav-link" href="Controller_Supplier">
+          <i class="mdi mdi-truck menu-icon"></i>
+          <span class="menu-title">Supplier</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Controller_Kategori">
+          <i class="mdi mdi-sitemap menu-icon"></i>
+          <span class="menu-title">Kategori</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Controller_Barang">
+          <i class="mdi mdi-cube menu-icon"></i>
+          <span class="menu-title">Barang</span>
+        </a>
+      </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Controller_User">
+            <i class="mdi mdi-account menu-icon"></i>
+            <span class="menu-title">User</span>
+          </a>
+        </li>
+    <?php
+      }
+    ?>
   </ul>
 </nav>
 </body>
