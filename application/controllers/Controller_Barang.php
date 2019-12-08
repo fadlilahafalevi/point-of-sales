@@ -1,8 +1,8 @@
 <?php
 
-class Controller_Barang extends CI_Controller {
-	function index() {
-		$this->load->model('M_Barang');
+class Controller_Barang extends CI_Controller{
+	public function index(){
+        $this->load->model('M_Barang');
 
 		if ($this->session->userdata('akses') == '1') {
 			$data['data'] = $this->M_Barang->getAllBarang();
@@ -14,17 +14,41 @@ class Controller_Barang extends CI_Controller {
 		}
 	}
 
-	public function getBarang($id = '') {
+	public function getBarangDetailByID($id = '') {
 		$this->load->model("M_Barang");
 
 		if ($this->session->userdata('akses') == '1') {
 			$data['id'] = $id;
 			if (isset($id)) {
-				$data['data'] = $this->M_Barang->getBarang($id);
+				$data['data'] = $this->M_Barang->getBarangDetailByID($id);
 			}
 
-			$this->load->view('admin/view_barang', $data);
+			$this->load->view('admin/barang_detail', $data);
 		}
+	}
+
+	public function updateBarangForm($id = '') {
+		$this->load->model("M_Barang");
+		$this->load->model("M_Kategori");
+
+		if ($this->session->userdata('akses') == '1') {
+			$data['id'] = $id;
+			if (isset($id)) {
+				$data['data'] = $this->M_Barang->getBarangDetailByID($id);
+				$data['kategori'] = $this->M_Kategori->getAllKategori();
+			}
+
+			$this->load->view('admin/barang_update', $data);
+		}
+	}
+
+	public function updateBarangCommit() {
+		$this->load->model('M_Barang');
+
+    	$data = $this->input->post();
+    	$saved = $this->M_Barang->updateBarang($data);
+
+        redirect("Controller_Barang");
 	}
 
 	public function createBarang() {

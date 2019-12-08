@@ -6,11 +6,24 @@ class M_Barang extends CI_Model {
 	// 	return $hsl;
 	// }
 
-	// function update_barang($kobar,$nabar,$kat,$satuan,$harpok,$harjul,$harjul_grosir,$stok,$min_stok){
-	// 	$user_id=$this->session->userdata('idadmin');
-	// 	$hsl=$this->db->query("UPDATE tbl_barang SET barang_nama='$nabar',barang_satuan='$satuan',barang_harpok='$harpok',barang_harjul='$harjul',barang_harjul_grosir='$harjul_grosir',barang_stok='$stok',barang_min_stok='$min_stok',barang_tgl_last_update=NOW(),barang_kategori_id='$kat',barang_user_id='$user_id' WHERE barang_id='$kobar'");
-	// 	return $hsl;
-	// }
+	function updateBarang(){
+		$this->load->model('P6_Model');
+
+		$data_to_update = array(
+            "barang_nama" 			 => $val['barang_nama'],
+            "barang_satuan"			 => $val['barang_satuan'],
+            "barang_harpok" 		 => $val['barang_harpok'],
+            "barang_harjul" 		 => $val['barang_harjul'],
+            "barang_harjul_grosir" 	 => $val['barang_harjul_grosir'],
+            "barang_stok" 			 => $val['barang_stok'],
+            "barang_min_stok" 		 => $val['barang_min_stok'],
+            "barang_kategori_id" 	 => $val['barang_kategori_id'],
+            "barang_tgl_last_update" => NOW(),
+        );
+
+		$this->db->where('barang_id', $val["barang_id"]);
+        return $this->db->update('tbl_barang', $data_to_update);
+	}
 
 	public function getAllBarang() {
 		$this->db->select('*');
@@ -30,11 +43,11 @@ class M_Barang extends CI_Model {
 		$this->db->insert('tbl_barang', $data);
 	}
 
-	function getBarang($id) {
+	function getBarangDetailByID($id) {
 		$this->db->select('*');
 		$this->db->from('tbl_barang');
 		$this->db->join('tbl_kategori', 'tbl_barang.barang_kategori_id = tbl_kategori.kategori_id');
-		$this->db->where('id', $id);
+		$this->db->where('tbl_barang.id', $id);
 		$query = $this->db->get();
 		return $query->result();
 	}
