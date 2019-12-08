@@ -1,13 +1,19 @@
 <?php
 
 class Controller_Barang extends CI_Controller{
+    public function __construct(){
+        parent::__construct();
+        if($this->session->userdata('masuk') !=TRUE){
+            $url=base_url();
+            redirect($url);
+        };
+    }
+
 	public function index(){
         $this->load->model('M_Barang');
 
 		if ($this->session->userdata('akses') == '1') {
 			$data['data'] = $this->M_Barang->getAllBarang();
-			// $data['kat']=$this->m_kategori->tampil_kategori();
-			// $data['kat2']=$this->m_kategori->tampil_kategori();
 			$this->load->view('admin/barang', $data);
 		} else {
 			echo "Halaman tidak ditemukan";
@@ -16,11 +22,13 @@ class Controller_Barang extends CI_Controller{
 
 	public function getBarangDetailByID($id = '') {
 		$this->load->model("M_Barang");
+		$this->load->model("M_Kategori");
 
 		if ($this->session->userdata('akses') == '1') {
 			$data['id'] = $id;
 			if (isset($id)) {
 				$data['data'] = $this->M_Barang->getBarangDetailByID($id);
+				$data['kategori'] = $this->M_Kategori->getAllKategori();
 			}
 
 			$this->load->view('admin/barang_detail', $data);
@@ -45,10 +53,27 @@ class Controller_Barang extends CI_Controller{
 	public function updateBarangCommit() {
 		$this->load->model('M_Barang');
 
-    	$data = $this->input->post();
-    	$saved = $this->M_Barang->updateBarang($data);
+		$barang_id 				= $this->input->post('barang_id');
+		$barang_nama 			= $this->input->post('barang_nama');
+		$barang_kategori_id 	= $this->input->post('barang_kategori_id');
+		$barang_satuan 			= $this->input->post('barang_satuan');
+		$barang_harpok 			= $this->input->post('barang_harpok');
+		$barang_stok 			= $this->input->post('barang_stok');
+		$barang_min_stok 		= $this->input->post('barang_min_stok');
 
-        redirect("Controller_Barang");
+    	$data = array(
+            "barang_id" 			 => $barang_id,
+            "barang_nama" 			 => $barang_nama,
+            "barang_kategori_id" 	 => $barang_kategori_id,
+            "barang_satuan"			 => $barang_satuan,
+            "barang_harpok" 		 => $barang_harpok,
+            "barang_stok" 			 => $barang_stok,
+            "barang_min_stok" 		 => $barang_min_stok
+        );
+
+    	$this->M_Barang->updateBarang($data);
+
+		redirect('Controller_Barang');
 	}
 
 	public function createBarang() {

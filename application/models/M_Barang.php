@@ -6,19 +6,17 @@ class M_Barang extends CI_Model {
 	// 	return $hsl;
 	// }
 
-	function updateBarang(){
-		$this->load->model('P6_Model');
+	function updateBarang($val){
+        $this->load->model('M_Barang');
 
 		$data_to_update = array(
             "barang_nama" 			 => $val['barang_nama'],
+            "barang_kategori_id" 	 => $val['barang_kategori_id'],
             "barang_satuan"			 => $val['barang_satuan'],
             "barang_harpok" 		 => $val['barang_harpok'],
-            "barang_harjul" 		 => $val['barang_harjul'],
-            "barang_harjul_grosir" 	 => $val['barang_harjul_grosir'],
             "barang_stok" 			 => $val['barang_stok'],
             "barang_min_stok" 		 => $val['barang_min_stok'],
-            "barang_kategori_id" 	 => $val['barang_kategori_id'],
-            "barang_tgl_last_update" => NOW(),
+            "barang_tgl_last_update" => "NOW()"
         );
 
 		$this->db->where('barang_id', $val["barang_id"]);

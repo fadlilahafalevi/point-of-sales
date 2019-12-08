@@ -52,10 +52,22 @@
                               </div>
                             </div>
                             <div class="form-group row">
-                              <label for="exampleInputMobile" class="col-sm-2 col-form-label">Kategori</label>
-                              <div class="col-sm-3">
-                                <input type="text" class="form-control" id="exampleInputMobile" placeholder="Kategori" value="<?=$list_barang->kategori_nama?>" disabled="disabled">
-                              </div>
+                              <label for="kategori" class="col-sm-2 col-form-label">Kategori</label>
+                                <div class="col-sm-3">
+                                  <select class="form-control" id="kategori" disabled="disabled">
+                                    <option></option>
+                                    <?php
+                                      foreach($kategori as $kategori) { 
+                                        if($kategori->kategori_id == $list_barang->barang_kategori_id) { ?>
+                                          <option value="<?= $kategori->kategori_id; ?>" selected="true"><?= $kategori->kategori_nama;?></option>
+                                        <?php } else { ?>
+                                          <option value="<?= $kategori->kategori_id; ?>"><?= $kategori->kategori_nama;?></option>
+                                    <?php
+                                        }
+                                      } 
+                                    ?>
+                                  </select>
+                                </div>
                             </div>
                             <div class="form-group row">
                               <label for="exampleInputMobile" class="col-sm-2 col-form-label">Satuan</label>

@@ -32,29 +32,29 @@
                           foreach ($data as $list_barang) {
                       	?>
                         <div>
-                          <form class="forms-sample">
+                          <form method="POST" action="<?php echo base_url().'Controller_Barang/updateBarangCommit'; ?>" class="forms-sample">
                             <div class="form-group row">
                               <label for="exampleInputUsername2" class="col-sm-2 col-form-label">ID</label>
                               <div class="col-sm-1">
-                                <input type="text" class="form-control" id="exampleInputUsername2" placeholder="ID" value="<?=$list_barang->id?>" readonly="readonly">
+                                <input type="text" class="form-control" id="id" name="id" placeholder="ID" value="<?=$list_barang->id?>" readonly="readonly">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Kode Barang</label>
                               <div class="col-sm-3">
-                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Kode Barang" value="<?=$list_barang->barang_id?>" readonly="readonly">
+                                <input type="text" class="form-control" id="barang_id" name="barang_id" placeholder="Kode Barang" value="<?=$list_barang->barang_id?>" readonly="readonly">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="exampleInputMobile" class="col-sm-2 col-form-label">Nama Barang</label>
                               <div class="col-sm-3">
-                                <input type="text" class="form-control" id="exampleInputMobile" placeholder="Nama Barang" value="<?=$list_barang->barang_nama?>">
+                                <input type="text" class="form-control" id="barang_nama" name="barang_nama" placeholder="Nama Barang" value="<?=$list_barang->barang_nama?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="kategori" class="col-sm-2 col-form-label">Kategori</label>
                                 <div class="col-sm-3">
-                                  <select class="form-control" id="kategori">
+                                  <select class="form-control" id="barang_kategori_id" name="barang_kategori_id">
                                     <option></option>
                                     <?php
                                       foreach($kategori as $kategori) { 
@@ -68,43 +68,45 @@
                                     ?>
                                   </select>
                                 </div>
-                              </div>
+                            </div>
                             <div class="form-group row">
                               <label for="exampleInputMobile" class="col-sm-2 col-form-label">Satuan</label>
                               <div class="col-sm-3">
-                                <input type="text" class="form-control" id="exampleInputMobile" placeholder="Satuan" value="<?=$list_barang->barang_satuan?>">
+                                <input type="text" class="form-control" id="barang_satuan" name="barang_satuan" placeholder="Satuan" value="<?=$list_barang->barang_satuan?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="exampleInputMobile" class="col-sm-2 col-form-label">Harga Pokok</label>
                               <div class="col-sm-3">
-                                <input type="text" class="form-control" id="exampleInputMobile" placeholder="Harga Pokok" value="<?=$list_barang->barang_harpok?>">
+                                <input type="text" class="form-control" id="barang_harpok" name="barang_harpok" placeholder="Harga Pokok" value="<?=$list_barang->barang_harpok?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="exampleInputMobile" class="col-sm-2 col-form-label">Stock</label>
                               <div class="col-sm-3">
-                                <input type="text" class="form-control" id="exampleInputMobile" placeholder="Stock" value="<?=$list_barang->barang_stok?>">
+                                <input type="text" class="form-control" id="barang_stok" name="barang_stok" placeholder="Stock" value="<?=$list_barang->barang_stok?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="exampleInputMobile" class="col-sm-2 col-form-label">Minimal Stock</label>
                               <div class="col-sm-3">
-                                <input type="text" class="form-control" id="exampleInputMobile" placeholder="Minimal Stock" value="<?=$list_barang->barang_min_stok?>">
+                                <input type="text" class="form-control" id="barang_min_stok" name="barang_min_stok" placeholder="Minimal Stock" value="<?=$list_barang->barang_min_stok?>">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="exampleInputMobile" class="col-sm-2 col-form-label">Tanggal Input</label>
                               <div class="col-sm-3">
-                                <input type="text" class="form-control" id="exampleInputMobile" placeholder="Tanggal Input" value="<?=$list_barang->barang_tgl_input?>" disabled="disabled">
+                                <input type="text" class="form-control" id="barang_tgl_input" name="barang_tgl_input" placeholder="Tanggal Input" value="<?=$list_barang->barang_tgl_input?>" disabled="disabled">
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="exampleInputMobile" class="col-sm-2 col-form-label">Tanggal Update Terakhir</label>
                               <div class="col-sm-3">
-                                <input type="text" class="form-control" id="exampleInputMobile" placeholder="Tanggal Update Terakhir" value="<?=$list_barang->barang_tgl_last_update?>" disabled="disabled">
+                                <input type="text" class="form-control" id="barang_tgl_last_update" name="barang_tgl_last_update" placeholder="Tanggal Update Terakhir" value="<?=$list_barang->barang_tgl_last_update?>" disabled="disabled">
                               </div>
                             </div>
+                            <button type="submit" class="btn btn-success">SAVE</button>
+                            <a href="/point-of-sales/index.php/Controller_Barang" class="btn btn-primary">BACK</a>
                           </form>
                         </div>
                         <?php
@@ -114,8 +116,6 @@
                     </table>
                   </div>
                   <br>
-                  <a href="/point-of-sales/index.php/Controller_Barang/updateBarangCommit" class="btn btn-success">SUBMIT</a>
-                  <a href="/point-of-sales/index.php/Controller_Barang" class="btn btn-primary">BACK</a>
                 </div>
               </div>
             </div>
