@@ -26,6 +26,10 @@ class M_Barang extends CI_Model {
 	// 	return $hsl;
 	// }
 
+	function input_data($data) {
+		$this->db->insert('tbl_barang', $data);
+	}
+
 	function getBarang($id) {
 		$this->db->select('*');
 		$this->db->from('tbl_barang');

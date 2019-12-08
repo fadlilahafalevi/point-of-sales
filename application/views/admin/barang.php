@@ -25,7 +25,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">MASTER BARANG</h4>
-                  <button type="button" class="btn btn-success">CREATE</button>
+                  <a class="btn btn-success" href="/point-of-sales/index.php/Controller_Barang/createBarang">CREATE</a>
                   <div class="table-responsive pt-3">
                     <table class="table table-bordered data-table">
                       <thead>
