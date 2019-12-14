@@ -13,13 +13,13 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="Controller_Penjualan">
+      <a class="nav-link" href="Controller_Penjualan_Eceran">
         <i class="mdi mdi-cart menu-icon"></i>
         <span class="menu-title">Penjualan Eceran</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="Controller_Grosir">
+      <a class="nav-link" href="Controller_Penjualan_Grosir">
         <i class="mdi mdi-cart menu-icon"></i>
         <span class="menu-title">Penjualan Grosir</span>
       </a>

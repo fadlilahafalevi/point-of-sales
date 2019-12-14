@@ -50,6 +50,12 @@ class M_Barang extends CI_Model {
 		return $query->result();
 	}
 
+	public function getBarangDetailByCode($kode_barang) {
+        $query = $this->db->get_where('tbl_barang', array("barang_id"=>$kode_barang));
+        if($tmp = $query->result_array())
+            return $tmp[0];
+	}
+
 	// function get_kobar(){
 	// 	$q = $this->db->query("SELECT MAX(RIGHT(barang_id,6)) AS kd_max FROM tbl_barang");
 	//        $kd = "";
