@@ -13,20 +13,26 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="Controller_Penjualan_Eceran">
-        <i class="mdi mdi-cart menu-icon"></i>
-        <span class="menu-title">Penjualan Eceran</span>
+      <a class="nav-link" href="Controller_Retur">
+        <i class="mdi mdi-refresh menu-icon"></i>
+        <span class="menu-title">Retur</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="Controller_Penjualan_Grosir">
+      <a class="nav-link" href="Controller_Penjualan">
         <i class="mdi mdi-cart menu-icon"></i>
-        <span class="menu-title">Penjualan Grosir</span>
+        <span class="menu-title">Penjualan</span>
       </a>
     </li>
     <?php
       if($this->session->userdata('akses')=='1'){
     ?>
+      <li class="nav-item">
+        <a class="nav-link" href="Controller_Pembelian">
+          <i class="mdi mdi-cart menu-icon"></i>
+          <span class="menu-title">Pembelian</span>
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="Controller_Supplier">
           <i class="mdi mdi-truck menu-icon"></i>
@@ -45,12 +51,18 @@
           <span class="menu-title">Barang</span>
         </a>
       </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Controller_User">
-            <i class="mdi mdi-account menu-icon"></i>
-            <span class="menu-title">User</span>
-          </a>
-        </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Controller_User">
+          <i class="mdi mdi-account menu-icon"></i>
+          <span class="menu-title">User</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Controller_Report">
+          <i class="mdi mdi-file menu-icon"></i>
+          <span class="menu-title">Report</span>
+        </a>
+      </li>
     <?php
       }
     ?>

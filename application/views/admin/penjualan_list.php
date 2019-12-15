@@ -27,7 +27,7 @@
                   <h4 class="card-title">TRANSAKSI PENJUALAN ECERAN</h4>
                   <center><?php echo $this->session->flashdata('msg');?></center>
 
-                  <form class="forms-sample" action="<?php echo base_url().'Controller_Penjualan_Eceran/add_to_cart'?>" method="post">
+                  <form class="forms-sample" action="<?php echo base_url().'Controller_Penjualan/add_to_cart'?>" method="post">
                     <div class="form-group row">
                       <label for="barang_id" class="col-sm-2 col-form-label"><b>Kode Barang</b></label>
                       <div class="col-sm-2">
@@ -68,8 +68,7 @@
                              <td style="text-align:right;"><?php echo number_format($items['disc']);?></td>
                              <td style="text-align:center;"><?php echo number_format($items['qty']);?></td>
                              <td style="text-align:right;"><?php echo number_format($items['subtotal']);?></td>
-                            
-                             <td style="text-align:center;"><a href="<?php echo base_url().'Controller_Penjualan_Eceran/remove/'.$items['rowid'];?>" class="btn btn-danger"><span class="mdi mdi-close"></span> Remove</a></td>
+                             <td style="text-align:center;"><a href="<?php echo base_url().'Controller_Penjualan/remove/'.$items['rowid'];?>" class="btn btn-danger"><span class="mdi mdi-close"></span> Remove</a></td>
                           </tr>
                         <?php 
                           $i++;
@@ -81,7 +80,7 @@
 
                   <br><br><br><br>
 
-                  <form class="forms-sample" action="<?php echo base_url().'Controller_Penjualan_Eceran/insertTransaction'?>" method="post">
+                  <form class="forms-sample" action="<?php echo base_url().'Controller_Penjualan/insertTransaction'?>" method="post">
                     <div class="form-group row">
                       <label for="barang_stok" class="col-sm-2 col-form-label"><b>Total Belanja (Rp)</b></label>
                       <div class="col-sm-2">
@@ -143,22 +142,16 @@
   </script>
 
   <script type="text/javascript">
-    $(function(){
-      $('.bayar_tunai').priceFormat({
-        prefix: '',
-        centsLimit: 0,
-        thousandsSeparator: ','
-      });
-      $('#kembalian').priceFormat({
-        prefix: '',
-        centsLimit: 0,
-        thousandsSeparator: ','
-      });
-      $('#barang_harjul').priceFormat({
-        prefix: '',
-        centsLimit: 0,
-        thousandsSeparator: ','
-      });
+    $('#kembalian').priceFormat({
+      prefix: '',
+      centsLimit: 0,
+      thousandsSeparator: ','
+    });
+    
+    $('#barang_harjul').priceFormat({
+      prefix: '',
+      centsLimit: 0,
+      thousandsSeparator: ','
     });
   </script>
 
@@ -170,7 +163,7 @@
         var kode_barang = {barang_id:$(this).val()};
         $.ajax({
           type: "POST",
-          url : "<?php echo base_url().'Controller_Penjualan_Eceran/getBarangDetailByCode';?>",
+          url : "<?php echo base_url().'Controller_Penjualan/getBarangDetailByCode';?>",
           data: kode_barang,
           success: function(msg){
             $('#detail_barang').html(msg);

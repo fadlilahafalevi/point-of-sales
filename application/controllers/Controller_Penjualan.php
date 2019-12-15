@@ -1,21 +1,19 @@
 <?php
-class Controller_Penjualan_Eceran extends CI_Controller{
+class Controller_Penjualan extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
 		if($this->session->userdata('masuk') !=TRUE){
             $url=base_url();
             redirect($url);
         };
-		// $this->load->model('m_kategori');
 		$this->load->model('M_Barang');
-		// $this->load->model('m_suplier');
-		// $this->load->model('m_penjualan');
+		$this->load->model('M_Penjualan');
 	}
 
 	public function index(){
 		if($this->session->userdata('akses')=='1' || $this->session->userdata('akses')=='2'){
 			$data['data']=$this->M_Barang->getAllBarang();
-			$this->load->view('admin/penjualan_eceran_list',$data);
+			$this->load->view('admin/penjualan_list',$data);
 		}else{
 	        echo "Halaman tidak ditemukan";
 	    }
@@ -25,7 +23,7 @@ class Controller_Penjualan_Eceran extends CI_Controller{
 		if($this->session->userdata('akses')=='1' || $this->session->userdata('akses')=='2'){
 			$kode_barang 		= $this->input->post('barang_id');
 			$data['barang']		= $this->M_Barang->getBarangDetailByCode($kode_barang);
-			$this->load->view('admin/penjualan_eceran_detail',$data);
+			$this->load->view('admin/penjualan_detail',$data);
 		}else{
 	        echo "Halaman tidak ditemukan";
 	    }
@@ -67,7 +65,7 @@ class Controller_Penjualan_Eceran extends CI_Controller{
 			}else{
 				$this->cart->insert($data);
 			}
-			redirect('Controller_Penjualan_Eceran');
+			redirect('Controller_Penjualan');
 		}else{
 	        echo "Halaman tidak ditemukan";
 	    }
@@ -75,12 +73,12 @@ class Controller_Penjualan_Eceran extends CI_Controller{
 
 	public function remove(){
 		if($this->session->userdata('akses')=='1' || $this->session->userdata('akses')=='2'){
-			$row_id = $this->uri->segment(4);
+			$row_id = $this->uri->segment(3);
 			$this->cart->update(array(
 	               'rowid'      => $row_id,
 	               'qty'     => 0
 	            ));
-			redirect('Controller_Penjualan_Eceran');
+			redirect('Controller_Penjualan');
 		}else{
 	        echo "Halaman tidak ditemukan";
 	    }
@@ -88,14 +86,14 @@ class Controller_Penjualan_Eceran extends CI_Controller{
 
 	public function insertTransaction(){
 		if($this->session->userdata('akses')=='1' || $this->session->userdata('akses')=='2'){
-			$total 			= $this->input->post('total_belanja');
+			$total 			= $this->input->post('total_belanja_hide');
 			$bayar_tunai 	= str_replace(",", "", $this->input->post('bayar_tunai'));
 			$kembalian		= $bayar_tunai - $total;
 
 			if(!empty($total) && !empty($bayar_tunai)){
 				if($bayar_tunai < $total){
-					echo $this->session->set_flashdata('msg','<label class="label label-danger">Jumlah Uang yang anda masukan Kurang</label>');
-					redirect('Controller_Penjualan_Eceran');
+					echo $this->session->set_flashdata('msg','<label style="color: red;"><b>Jumlah uang yang anda masukan kurang.</b></label>');
+					redirect('Controller_Penjualan');
 				}else{
 					$no_faktur 		= $this->M_Penjualan->getNoFaktur();
 
@@ -114,18 +112,23 @@ class Controller_Penjualan_Eceran extends CI_Controller{
 						
 						$this->session->unset_userdata('tglfak');
 						$this->session->unset_userdata('suplier');
-						$this->load->view('admin/alert/alert_sukses');	
+						$this->load->view('admin/penjualan_success');	
 					}else{
-						redirect('Controller_Penjualan_Eceran');
+						redirect('Controller_Penjualan');
 					}
 				}
 				
 			}else{
-				echo $this->session->set_flashdata('msg','<label class="label label-danger">Penjualan Gagal di Simpan, Mohon Periksa Kembali Semua Inputan Anda!</label>');
-				redirect('Controller_Penjualan_Eceran');
+				echo $this->session->set_flashdata('msg','<label style="color: red;"><b>Penjualan gagal disimpan, mohon periksa kembali semua inputan Anda!</b></label>');
+				redirect('Controller_Penjualan');
 			}
 		}else{
 	        echo "Halaman tidak ditemukan";
 	    }
+	}
+
+	public function print_invoice(){
+		$data['data'] = $this->M_Penjualan->print_invoice();
+		$this->load->view('admin/report/report_invoice',$data);
 	}
 }

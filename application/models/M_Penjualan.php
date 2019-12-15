@@ -1,19 +1,18 @@
 <?php
 class M_Penjualan extends CI_Model{
 	public function insertTransaction($val){
-		$idadmin=$this->session->userdata('idadmin');
+		$user_id=$this->session->userdata('user_id');
 
 		$data_jual = array(
             "jual_nofak" 			 => $val['jual_nofak'],
             "jual_total" 	 		 => $val['jual_total'],
             "jual_jml_uang"			 => $val['jual_jml_uang'],
             "jual_kembalian" 		 => $val['jual_kembalian'],
-            "jual_user_id" 			 => $idadmin,
+            "jual_user_id" 			 => $user_id,
             "jual_keterangan" 		 => 'Eceran'
         );
 		$this->db->insert('tbl_jual',$data_jual);
 
-		// $this->db->query("INSERT INTO tbl_jual (jual_nofak,jual_total,jual_jml_uang,jual_kembalian,jual_user_id,jual_keterangan) VALUES ('$nofak','$total','$jml_uang','$kembalian','$idadmin','eceran')");
 		foreach ($this->cart->contents() as $item) {
 			$data_to_insert = array(
 				'd_jual_nofak' 			=>	$val['jual_nofak'],
@@ -33,8 +32,6 @@ class M_Penjualan extends CI_Model{
 	        );
 			$this->db->where('barang_id', $item['id']);
 	        $this->db->update('tbl_barang', $data_to_update);
-			
-			//$this->db->query("update tbl_barang set barang_stok=barang_stok-'$item[qty]' where barang_id='$item[id]'");
 		}
 		return true;
 	}
@@ -54,3 +51,16 @@ class M_Penjualan extends CI_Model{
         
         return date('dmy').$kode;
 	}
+
+	public function print_invoice(){
+		$no_faktur 	= $this->session->userdata('nofak');
+
+		$this->db->select("jual_nofak, DATE_FORMAT(jual_tanggal,'%d/%m/%Y %H:%i:%s') AS jual_tanggal, jual_total, jual_jml_uang, jual_kembalian, jual_keterangan, d_jual_barang_nama, d_jual_barang_satuan, d_jual_barang_harjul, d_jual_qty, d_jual_diskon ,d_jual_total");
+        $this->db->from('tbl_jual');
+		$this->db->join('tbl_detail_jual', 'tbl_jual.jual_nofak = tbl_detail_jual.d_jual_nofak');
+		$this->db->where('tbl_jual.jual_nofak', $no_faktur);
+		$query = $this->db->get();
+		
+		return $query;
+	}
+}
