@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PENJUALAN</title>
+  <title>RETUR PENJUALAN</title>
   <link rel="stylesheet" href="/point-of-sales/assets/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="/point-of-sales/assets/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="/point-of-sales/assets/css/vendor.bundle.base.css">
@@ -24,10 +24,10 @@
           <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">TRANSAKSI PENJUALAN</h4>
+                  <h4 class="card-title">RETUR PENJUALAN</h4>
                   <center><?php echo $this->session->flashdata('msg');?></center>
 
-                  <form class="forms-sample" action="<?php echo base_url().'Controller_Penjualan/add_to_cart'?>" method="post">
+                  <form class="forms-sample" action="<?php echo base_url().'Controller_Retur/createRetur'?>" method="post">
                     <div class="form-group row">
                       <label for="barang_id" class="col-sm-2 col-form-label"><b>Kode Barang</b></label>
                       <div class="col-sm-2">
@@ -43,65 +43,36 @@
                     <table class="table table-bordered data-table">
                       <thead>
                         <tr>
+                          <th>Tanggal</th>
                           <th>Kode Barang</th>
                           <th>Nama Barang</th>
                           <th>Satuan</th>
                           <th>Harga (Rp)</th>
-                          <th>Diskon (Rp)</th>
-                          <th>Qty</th>
+                          <th>Jumlah</th>
                           <th>Sub Total</th>
-                          <th>Action</th>
+                          <th>Keterangan</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php
-                          $i = 1;
-                          foreach ($this->cart->contents() as $items): 
-                          echo form_hidden($i.'[rowid]', $items['rowid']);
+                          <?php
+                          foreach ($retur as $list_retur) {
                         ?>
                           <tr>
-                              <td><?=$items['id'];?></td>
-                             <td><?=$items['name'];?></td>
-                             <td style="text-align:center;"><?=$items['satuan'];?></td>
-                             <td style="text-align:right;"><?php echo number_format($items['amount']);?></td>
-                             <td style="text-align:right;"><?php echo number_format($items['disc']);?></td>
-                             <td style="text-align:center;"><?php echo number_format($items['qty']);?></td>
-                             <td style="text-align:right;"><?php echo number_format($items['subtotal']);?></td>
-                             <td style="text-align:center;"><a href="<?php echo base_url().'Controller_Penjualan/remove/'.$items['rowid'];?>" class="btn btn-danger"><span class="mdi mdi-close"></span> Remove</a></td>
+                              <td><?=$list_retur->retur_tanggal?></td>
+                              <td><?=$list_retur->retur_barang_id?></td>
+                              <td><?=$list_retur->retur_barang_nama?></td>
+                              <td><?=$list_retur->retur_barang_satuan?></td>
+                              <td><?=$list_retur->retur_harjul?></td>
+                              <td><?=$list_retur->retur_qty?></td>
+                              <td><?=$list_retur->retur_subtotal?></td>
+                              <td><?=$list_retur->retur_keterangan?></td>
                           </tr>
                         <?php 
-                          $i++;
-                          endforeach;
+                          }
                         ?>
                       </tbody>
                     </table>
                   </div>
-
-                  <br><br><br><br>
-
-                  <form class="forms-sample" action="<?php echo base_url().'Controller_Penjualan/insertTransaction'?>" method="post">
-                    <div class="form-group row">
-                      <label for="barang_stok" class="col-sm-2 col-form-label"><b>Total Belanja (Rp)</b></label>
-                      <div class="col-sm-2">
-                        <input type="text" class="form-control" id="total_belanja" name="total_belanja" placeholder="Total Belanja (Rp)" readonly="readonly" value="<?php echo number_format($this->cart->total());?>" style="text-align:right;margin-bottom:5px;">
-                        <input type="hidden" id="total_belanja_hide" name="total_belanja_hide" value="<?php echo $this->cart->total();?>" class="form-control" readonly="readonly">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="barang_stok" class="col-sm-2 col-form-label"><b>Tunai (Rp)</b></label>
-                      <div class="col-sm-2">
-                        <input type="text" class="bayar_tunai form-control" id="bayar_tunai" name="bayar_tunai" placeholder="Tunai (Rp)" style="text-align:right;margin-bottom:5px;">
-                        <input type="hidden" id="bayar_tunai_hide" name="bayar_tunai_hide" class="form-control" required>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="barang_stok" class="col-sm-2 col-form-label"><b>Kembali (Rp)</b></label>
-                      <div class="col-sm-2">
-                        <input type="text" class="form-control" id="kembalian" name="kembalian" placeholder="Kembali (Rp)" readonly="readonly" style="text-align:right;margin-bottom:5px;">
-                      </div>
-                    </div>
-                    <button class="btn btn-success" type="submit">SUBMIT</button>
-                  </form>
                 </div>
               </div>
             </div>
@@ -162,7 +133,7 @@
         var kode_barang = {barang_id:$(this).val()};
         $.ajax({
           type: "POST",
-          url : "<?php echo base_url().'Controller_Penjualan/getBarangDetailByCode';?>",
+          url : "<?php echo base_url().'Controller_Retur/getBarangDetailByCode';?>",
           data: kode_barang,
           success: function(msg){
             $('#detail_barang').html(msg);

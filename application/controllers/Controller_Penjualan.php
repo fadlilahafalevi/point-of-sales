@@ -12,7 +12,7 @@ class Controller_Penjualan extends CI_Controller{
 
 	public function index(){
 		if($this->session->userdata('akses')=='1' || $this->session->userdata('akses')=='2'){
-			$data['data']=$this->M_Barang->getAllBarang();
+			$data['data'] = $this->M_Barang->getAllBarang();
 			$this->load->view('admin/penjualan_list',$data);
 		}else{
 	        echo "Halaman tidak ditemukan";
