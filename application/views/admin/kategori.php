@@ -38,10 +38,12 @@
                       </thead>
                       <tbody>
                         <?php 
+                          $no=0;
                           foreach ($data as $list_kategori){
+                          $no++;
                         ?>
                           <tr>
-                              <td><?=$list_kategori->id?></td>
+                              <td><?=$no?></td>
                               <td><?=$list_kategori->kategori_id?></td>
                               <td><?=$list_kategori->kategori_nama?></td>
                               <td>

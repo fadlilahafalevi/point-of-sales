@@ -39,10 +39,12 @@
                       </thead>
                       <tbody>
                         <?php 
+                          $no=0;
                           foreach ($data as $list_user){
+                          $no++;
                         ?>
                           <tr>
-                              <td><?=$list_user->id?></td>
+                              <td><?=$no?></td>
                               <td><?=$list_user->user_name?></td>
                               <td>
                                 <?php
