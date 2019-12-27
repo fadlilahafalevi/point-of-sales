@@ -13,11 +13,84 @@
   <link rel="stylesheet" href="/point-of-sales/assets/css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="/point-of-sales/assets/images/favicon.png" /> 
+    
+  <!-- <link src="/point-of-sales/assets/js/grafik/jquery.js"/> -->
+  <link href="/point-of-sales/assets/js/grafik/highcharts.js"/>
+  <?php
+        foreach($report as $data){
+            $merk[] = $data->kategori_nama;
+            $stok[] = (float) $data->tot_stok;
+        }
+        
+        foreach($reportPenjualan as $data){
+            $totalP[] = $data->total;
+            $tahunP[] = (float) $data->tahun;
+        }
+  ?>
 </head>
 <body>
   <div class="container-fluid page-body-wrapper">
     <?php require 'application/views/header.php'; ?>
     <?php require 'application/views/sidebar.php'; ?>
+    <div class="main-panel">
+      <div class="content-wrapper">
+        Stok Barang
+        <br><br>
+      <canvas id="canvas" width="1000" height="280"></canvas>
+      <script type="text/javascript" src="/point-of-sales/assets/js/grafik/chartjs/chart.min.js"></script>
+      <script>
+       
+                  var lineChartData = {
+                      labels : <?php echo json_encode($merk);?>,
+                      datasets : [
+                           
+                          {
+                              fillColor: "rgba(60,141,188,0.9)",
+                              strokeColor: "rgba(60,141,188,0.8)",
+                              pointColor: "#3b8bba",
+                              pointStrokeColor: "#fff",
+                              pointHighlightFill: "#fff",
+                              pointHighlightStroke: "rgba(152,235,239,1)",
+                              data : <?php echo json_encode($stok);?>
+                          }
+       
+                      ]
+                       
+                  }
+       
+              var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Line(lineChartData);
+               
+          </script>
+        <br><br>
+        Grafik Penjualan Keseluruhan
+        <br><br>
+      <canvas id="canvasPenjualan" width="1000" height="280"></canvas>
+      <script>
+       
+                  var lineChartData = {
+                      labels : <?php echo json_encode($tahunP);?>,
+                      datasets : [
+                           
+                          {
+                              fillColor: "rgba(60,141,188,0.9)",
+                              strokeColor: "rgba(60,141,188,0.8)",
+                              pointColor: "#3b8bba",
+                              pointStrokeColor: "#fff",
+                              pointHighlightFill: "#fff",
+                              pointHighlightStroke: "rgba(152,235,239,1)",
+                              data : <?php echo json_encode($totalP);?>
+                          }
+       
+                      ]
+                       
+                  }
+       
+              var myLine = new Chart(document.getElementById("canvasPenjualan").getContext("2d")).Line(lineChartData);
+               
+          </script>
+
+      </div>
+    </div>
   </div>
 
   <script src="/point-of-sales/assets/js/vendor.bundle.base.js"></script>

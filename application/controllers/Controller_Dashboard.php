@@ -8,9 +8,16 @@ class Controller_Dashboard extends CI_Controller {
             $url=base_url();
             redirect($url);
         };
+        $this->load->model('m_grafik');
 	}
 	
 	function index(){
-		$this->load->view('admin/dashboard');
+		if($this->session->userdata('akses')=='1'){
+			$data['report']=$this->m_grafik->statistik_stok();
+			$data['reportPenjualan']=$this->m_grafik->graf_penjualan();
+			$this->load->view('admin/dashboard',$data);
+		}else{
+	        echo "Halaman tidak ditemukan";
+	    }
 	}
 }
