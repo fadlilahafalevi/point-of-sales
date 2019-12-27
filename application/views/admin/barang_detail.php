@@ -30,7 +30,7 @@
                       <tbody>
                         <?php
                           foreach ($data as $list_barang) {
-                      	?>
+                        ?>
                         <div>
                           <form class="forms-sample">
                             <div class="form-group row">
@@ -82,6 +82,18 @@
                               </div>
                             </div>
                             <div class="form-group row">
+                              <label for="exampleInputMobile" class="col-sm-2 col-form-label">Harga Jual</label>
+                              <div class="col-sm-3">
+                                <input type="text" class="form-control" id="exampleInputMobile" placeholder="Harga Jual" value="<?=$list_barang->barang_harjul?>" disabled="disabled">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label for="exampleInputMobile" class="col-sm-2 col-form-label">Harga Jual Grosir</label>
+                              <div class="col-sm-3">
+                                <input type="text" class="form-control" id="exampleInputMobile" placeholder="Harga Jual" value="<?=$list_barang->barang_harjul_grosir?>" disabled="disabled">
+                              </div>
+                            </div>
+                            <div class="form-group row">
                               <label for="exampleInputMobile" class="col-sm-2 col-form-label">Stock</label>
                               <div class="col-sm-3">
                                 <input type="text" class="form-control" id="exampleInputMobile" placeholder="Stock" value="<?=$list_barang->barang_stok?>" disabled="disabled">
@@ -114,7 +126,7 @@
                     </table>
                   </div>
                   <br>
-                  <a href="/point-of-sales/index.php/Controller_Barang" class="btn btn-primary">BACK</a>
+                  <a href="/point-of-sales/index.php/Controller_Barang" class="btn btn-primary">Back</a>
                 </div>
               </div>
             </div>

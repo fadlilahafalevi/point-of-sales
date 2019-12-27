@@ -54,9 +54,9 @@
                               <td><?=$list_barang->kategori_nama?></td>
                               <td>
                                 <a class="btn btn-info" href="/point-of-sales/index.php/Controller_Barang/getBarangDetailByID/<?=$list_barang->id?>" data-toggle="tooltip" title="Detail" style="padding: 4px">
-                                 <i class="mdi mdi-eye"></i>
+                                  <i class="mdi mdi-eye"></i>
                                 </a>
-                               <a class="btn btn-warning" href="/point-of-sales/index.php/Controller_Barang/updateBarangForm/<?=$list_barang->id?>" data-toggle="tooltip" title="Edit" style="padding: 4px">
+                                <a class="btn btn-warning" href="/point-of-sales/index.php/Controller_Barang/updateBarangForm/<?=$list_barang->id?>" data-toggle="tooltip" title="Edit" style="padding: 4px">
                                   <i class="mdi mdi-pencil-box-outline"></i>
                                 </a>
                               </td>

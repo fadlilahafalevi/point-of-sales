@@ -25,15 +25,15 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">INSERT MASTER BARANG</h4>
-                  <div class="table-responsive pt-3">
+                  <div>
                     <table>
                       <tbody>
                       <div>
-                        <form class="forms-sample" action="<?php echo base_url() . 'controller_Barang/save'; ?>" method="post">
+                        <form class="forms-sample" action="<?php echo base_url() . 'controller_Barang/createBarangCommit'; ?>" method="post">
                           <div class="form-group row">
                             <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Kode Barang</label>
                             <div class="col-sm-3">
-                              <input type="email" class="form-control" id="kode" name="kode" placeholder="Kode Barang">
+                              <input type="text" class="form-control" id="kode" name="kode" placeholder="Kode Barang" required="required">
                             </div>
                           </div>
                           <div class="form-group row">
@@ -43,10 +43,18 @@
                             </div>
                           </div>
                           <div class="form-group row">
-                            <label for="exampleInputMobile" class="col-sm-2 col-form-label">Kategori</label>
-                            <div class="col-sm-3">
-                              <input type="text" class="form-control" id="kategori" name="kategori" placeholder="Kategori">
-                            </div>
+                            <label for="kategori" class="col-sm-2 col-form-label">Kategori</label>
+                              <div class="col-sm-3">
+                                <select class="form-control" id="barang_kategori_id" name="barang_kategori_id">
+                                  <option></option>
+                                  <?php
+                                    foreach($kategori as $kategori) { ?>
+                                        <option value="<?= $kategori->kategori_id; ?>"><?= $kategori->kategori_nama;?></option>
+                                  <?php
+                                      }
+                                  ?>
+                                </select>
+                              </div>
                           </div>
                           <div class="form-group row">
                             <label for="exampleInputMobile" class="col-sm-2 col-form-label">Satuan</label>
@@ -58,6 +66,18 @@
                             <label for="exampleInputMobile" class="col-sm-2 col-form-label">Harga Pokok</label>
                             <div class="col-sm-3">
                               <input type="text" class="form-control" id="hargaPokok" name="hargaPokok" placeholder="Harga Pokok">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="exampleInputMobile" class="col-sm-2 col-form-label">Harga Jual</label>
+                            <div class="col-sm-3">
+                              <input type="text" class="form-control" id="hargaPokok" name="hargaJual" placeholder="Harga Jual">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="exampleInputMobile" class="col-sm-2 col-form-label">Harga Jual Grosir</label>
+                            <div class="col-sm-3">
+                              <input type="text" class="form-control" id="hargaPokok" name="hargaJualGrosir" placeholder="Harga Jual Grosir">
                             </div>
                           </div>
                           <div class="form-group row">

@@ -78,23 +78,27 @@ class Controller_Barang extends CI_Controller{
 
 	public function createBarang() {
 		$this->load->model("M_Barang");
+		$this->load->model("M_Kategori");
 
 		if ($this->session->userdata('akses') == '1') {
 
-			$this->load->view('admin/create_barang');
+			$data['kategori'] = $this->M_Kategori->getAllKategori();
+			$this->load->view('admin/barang_create', $data);
 		}
 	}
 
-	public function save() {
+	public function createBarangCommit() {
 		$this->load->model("M_Barang");
 
 		if ($this->session->userdata('akses') == '1') {
 
 			$kode = $this->input->post('kode');
 			$nama = $this->input->post('nama');
-			$kategori = $this->input->post('kategori');
+			$kategori = $this->input->post('barang_kategori_id');
 			$satuan = $this->input->post('satuan');
 			$hargaPokok = $this->input->post('hargaPokok');
+			$hargaJual = $this->input->post('hargaJual');
+			$hargaJualGrosir = $this->input->post('hargaJualGrosir');
 			$stock = $this->input->post('stock');
 			$minimalStock = $this->input->post('minimalStock');
 
@@ -104,11 +108,15 @@ class Controller_Barang extends CI_Controller{
 				'barang_kategori_id' => $kategori,
 				'barang_satuan' => $satuan,
 				'barang_harpok' => $hargaPokok,
+				'barang_harjul' => $hargaJual,
+				'barang_harjul_grosir' => $hargaJualGrosir,
 				'barang_stok' => $stock,
 				'barang_min_stok' => $minimalStock,
 			);
 			$this->M_Barang->input_data($data);
-			redirect('admin/barang');
+			$data['data'] = $this->M_Barang->getAllBarang();
+			
+			$this->load->view('admin/barang', $data);
 		}
 	}
 }
