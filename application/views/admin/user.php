@@ -65,9 +65,6 @@
                                 ?>
                               </td>
                               <td>
-                                <button type="button" class="btn btn-dark btn-rounded btn-icon" data-toggle="tooltip" title="Detail" style="padding: 0;">
-                                  <i class="mdi mdi-eye"></i>
-                                </button>
                                 <button type="button" class="btn btn-primary btn-rounded btn-icon" data-toggle="tooltip" title="Edit" style="padding: 0;">
                                   <i class="mdi mdi-pencil-box-outline"></i>
                                 </button>

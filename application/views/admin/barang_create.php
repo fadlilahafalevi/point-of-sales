@@ -29,7 +29,7 @@
                     <table>
                       <tbody>
                       <div>
-                        <form class="forms-sample" action="<?php echo base_url() . 'controller_Barang/createBarangCommit'; ?>" method="post">
+                        <form class="forms-sample" action="<?php echo base_url() . 'Controller_Barang/createBarangCommit'; ?>" method="post">
                           <div class="form-group row">
                             <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Kode Barang</label>
                             <div class="col-sm-3">
@@ -72,12 +72,6 @@
                             <label for="exampleInputMobile" class="col-sm-2 col-form-label">Harga Jual</label>
                             <div class="col-sm-3">
                               <input type="text" class="form-control" id="hargaPokok" name="hargaJual" placeholder="Harga Jual">
-                            </div>
-                          </div>
-                          <div class="form-group row">
-                            <label for="exampleInputMobile" class="col-sm-2 col-form-label">Harga Jual Grosir</label>
-                            <div class="col-sm-3">
-                              <input type="text" class="form-control" id="hargaPokok" name="hargaJualGrosir" placeholder="Harga Jual Grosir">
                             </div>
                           </div>
                           <div class="form-group row">

@@ -98,7 +98,6 @@ class Controller_Barang extends CI_Controller{
 			$satuan = $this->input->post('satuan');
 			$hargaPokok = $this->input->post('hargaPokok');
 			$hargaJual = $this->input->post('hargaJual');
-			$hargaJualGrosir = $this->input->post('hargaJualGrosir');
 			$stock = $this->input->post('stock');
 			$minimalStock = $this->input->post('minimalStock');
 
@@ -109,7 +108,6 @@ class Controller_Barang extends CI_Controller{
 				'barang_satuan' => $satuan,
 				'barang_harpok' => $hargaPokok,
 				'barang_harjul' => $hargaJual,
-				'barang_harjul_grosir' => $hargaJualGrosir,
 				'barang_stok' => $stock,
 				'barang_min_stok' => $minimalStock,
 			);

@@ -24,7 +24,7 @@ class M_Pembelian extends CI_Model{
 			$this->db->insert('tbl_detail_beli',$data_to_insert);
 
 			$data_to_update = array(
-	            "barang_stok" 			 => 'barang_stok+' . $item['qty'],
+	            "barang_stok" 			 => $item['qty'],
 	            "barang_harpok"			 => $item['price'],
 	            "barang_harjul"          => $item['harga'],
 	            "barang_tgl_last_update" => 'NOW()'
@@ -36,7 +36,7 @@ class M_Pembelian extends CI_Model{
 	}
 
 	public function getKodeBeli(){
-		$q 		= $this->db->query("SELECT MAX(RIGHT(beli_kode,6)) AS kode_max FROM tbl_beli WHERE DATE(beli_tanggal)=CURDATE()");
+		$q 		= $this->db->query("SELECT MAX(RIGHT(beli_kode,6)) AS kode_max FROM tbl_beli WHERE DATE(beli_tanggal)=CURRENT_DATE");
         $kode 	= "";
 
         if($q->num_rows()>0){
