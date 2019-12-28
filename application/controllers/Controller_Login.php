@@ -37,7 +37,11 @@ class Controller_Login extends CI_Controller{
         }
         
         if($this->session->userdata('masuk') == true){
-            redirect('Controller_Dashboard');
+            if($this->session->userdata('akses')=='1'){
+                redirect('Controller_Dashboard');
+            } else {
+                redirect('Controller_Penjualan');
+            }
         }else{
             redirect('Controller_Login/login_failed');
         }

@@ -7,11 +7,17 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
     <li class="nav-item">
+    <?php
+      if($this->session->userdata('akses')=='1'){
+    ?>
       <a class="nav-link" href="Controller_Dashboard">
         <i class="mdi mdi-home menu-icon"></i>
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
+    <?php
+      }
+    ?>
     <li class="nav-item">
       <a class="nav-link" href="Controller_Retur">
         <i class="mdi mdi-refresh menu-icon"></i>
