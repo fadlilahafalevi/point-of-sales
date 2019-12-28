@@ -46,13 +46,13 @@
                               </div>
                             </div>
                             <div class="form-group row">
-                              <label for="exampleInputUsername2" class="col-sm-2 col-form-label">Nama Supplier</label>
+                              <label for="exampleInputUsername2" class="col-sm-2 col-form-label">Alamat Supplier</label>
                               <div class="col-sm-2">
                                 <input type="text" class="form-control" id="supplier_alamat" name="supplier_alamat" placeholder="Alamat Supplier" value="<?=$list_supplier->supplier_alamat?>">
                               </div>
                             </div>
                             <div class="form-group row">
-                              <label for="exampleInputUsername2" class="col-sm-2 col-form-label">Nama Supplier</label>
+                              <label for="exampleInputUsername2" class="col-sm-2 col-form-label">No. Telp Supplier</label>
                               <div class="col-sm-2">
                                 <input type="text" class="form-control" id="supplier_notelp" name="supplier_notelp" placeholder="No. Telp Supplier" value="<?=$list_supplier->supplier_notelp?>">
                               </div>
