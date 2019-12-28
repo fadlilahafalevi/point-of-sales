@@ -25,7 +25,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">MASTER USER</h4>
-                  <button type="button" class="btn btn-success">CREATE</button>
+                  <a class="btn btn-success" href="/point-of-sales/index.php/Controller_User/createUser">CREATE</a>
                   <div class="table-responsive pt-3">
                     <table class="table table-bordered data-table">
                       <thead>
@@ -65,12 +65,15 @@
                                 ?>
                               </td>
                               <td>
-                                <button type="button" class="btn btn-primary btn-rounded btn-icon" data-toggle="tooltip" title="Edit" style="padding: 0;">
+                                 <a class="btn btn-warning" href="/point-of-sales/index.php/Controller_User/updateUser/<?=$list_user->user_id?>" data-toggle="tooltip" title="Edit" style="padding: 4px">
                                   <i class="mdi mdi-pencil-box-outline"></i>
-                                </button>
-                                <button type="button" class="btn btn-danger btn-rounded btn-icon" data-toggle="tooltip" title="Inactive" style="padding: 0;">
+                                </a>
+                                <a class="btn btn-danger" href="/point-of-sales/index.php/Controller_User/inactivateUser/<?=$list_user->user_id?>" data-toggle="tooltip" title="Inactive" style="padding: 4px">
                                   <i class="mdi mdi-account-remove"></i>
-                                </button>
+                                </a>
+                                <a class="btn btn-primary" href="/point-of-sales/index.php/Controller_User/activateUser/<?=$list_user->user_id?>" data-toggle="tooltip" title="Activate" style="padding: 4px">
+                                  <i class="mdi mdi-account-plus"></i>
+                                </a>
                               </td>
                           </tr>
                         <?php

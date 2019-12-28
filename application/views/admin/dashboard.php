@@ -19,12 +19,12 @@
   <?php
         foreach($report as $data){
             $merk[] = $data->kategori_nama;
-            $stok[] = (float) $data->tot_stok;
+            $stok[] = $data->tot_stok;
         }
         
         foreach($reportPenjualan as $data){
             $totalP[] = $data->total;
-            $tahunP[] = (float) $data->tahun;
+            $tahunP[] = $data->tahun;
         }
   ?>
 </head>

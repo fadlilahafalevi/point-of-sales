@@ -12,50 +12,36 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="/point-of-sales/assets/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="/point-of-sales/assets/images/favicon.png" /> 
+  <link rel="shortcut icon" href="/point-of-sales/assets/images/favicon.png" />
 </head>
 <body>
-    <?php require 'application/views/header.php'; ?>
+    <?php require 'application/views/header.php';?>
   <div class="container-fluid page-body-wrapper">
-    <?php require 'application/views/sidebar.php'; ?>
+    <?php require 'application/views/sidebar.php';?>
     <div class="main-panel">
       <div class="content-wrapper">
         <div class="row">
           <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">MASTER KATEGORI</h4>
-                  <a class="btn btn-success" href="/point-of-sales/index.php/Controller_Kategori/createKategori">CREATE</a>
-                  <div class="table-responsive pt-3">
-                    <table class="table table-bordered data-table">
-                      <thead>
-                        <tr>
-                          <th>Kode Kategori</th>
-                          <th>Nama Kategori</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
+                  <h4 class="card-title">INSERT MASTER KATEGORI</h4>
+                  <div>
+                    <table>
                       <tbody>
-                        <?php 
-                          $no=0;
-                          foreach ($data as $list_kategori){
-                          $no++;
-                        ?>
-                          <tr>
-                              <td><?=$list_kategori->kategori_id?></td>
-                              <td><?=$list_kategori->kategori_nama?></td>
-                              <td>
-                                <a class="btn btn-warning" href="/point-of-sales/index.php/Controller_Kategori/updateKategori/<?=$list_kategori->kategori_id?>" data-toggle="tooltip" title="Edit" style="padding: 4px">
-                                  <i class="mdi mdi-pencil-box-outline"></i>
-                                </a>
-                              </td>
-                          </tr>
-                        <?php
-                        }
-                        ?>
+                        <div>
+                          <form method="POST" action="<?php echo base_url().'Controller_Kategori/createKategoriCommit'; ?>" class="forms-sample">
+                            <div class="form-group row">
+                              <label for="exampleInputUsername2" class="col-sm-2 col-form-label">Nama Kategori</label>
+                              <div class="col-sm-2">
+                                <input type="text" class="form-control" id="kategori_nama" name="kategori_nama" placeholder="Nama Kategori" required="required">
+                              </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">SAVE</button>
+                            <a href="/point-of-sales/index.php/Controller_Kategori" class="btn btn-primary">BACK</a>
                       </tbody>
                     </table>
                   </div>
+                  <br>
                 </div>
               </div>
             </div>
@@ -82,8 +68,8 @@
   <script src="/point-of-sales/assets/js/jquery.dataTables.js"></script>
   <script src="/point-of-sales/assets/js/dataTables.bootstrap4.js"></script>
   <script type="text/javascript">
-    $(document).ready(function(){  
-      $('.data-table').dataTable();      
+    $(document).ready(function(){
+      $('.data-table').dataTable();
     });
   </script>
 </body>

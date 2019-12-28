@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>KATEGORI</title>
+  <title>USER</title>
   <link rel="stylesheet" href="/point-of-sales/assets/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="/point-of-sales/assets/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="/point-of-sales/assets/css/vendor.bundle.base.css">
@@ -24,29 +24,44 @@
           <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">MASTER KATEGORI</h4>
+                  <h4 class="card-title">MASTER USER</h4>
                   <div>
                     <table>
                       <tbody>
                         <?php
-                          foreach ($data as $list_kategori) {
+                          foreach ($data as $list_user) {
                       	?>
                         <div>
-                          <form method="POST" action="<?php echo base_url().'Controller_Kategori/updateKategoriCommit'; ?>" class="forms-sample">
-                            <div class="form-group row">
-                              <label for="exampleInputUsername2" class="col-sm-2 col-form-label">Kode Kategori</label>
-                              <div class="col-sm-1">
-                                <input type="text" class="form-control" id="kategori_id" name="kategori_id" placeholder="Kode Kategori" value="<?=$list_kategori->kategori_id?>" readonly="readonly">
+                          <form method="POST" action="<?php echo base_url().'Controller_User/updateUserCommit'; ?>" class="forms-sample">
+                            <div class="form-group row" hidden>
+                              <label for="exampleInputUsername2" class="col-sm-2 col-form-label">User Id</label>
+                              <div class="col-sm-2">
+                                <input type="text" class="form-control" id="user_id" name="user_id" placeholder="User Id" value="<?=$list_user->user_id?>">
                               </div>
                             </div>
                             <div class="form-group row">
-                              <label for="exampleInputUsername2" class="col-sm-2 col-form-label">Nama Kategori</label>
+                              <label for="exampleInputUsername2" class="col-sm-2 col-form-label">Username</label>
                               <div class="col-sm-2">
-                                <input type="text" class="form-control" id="kategori_nama" name="kategori_nama" placeholder="Nama Kategori" value="<?=$list_kategori->kategori_nama?>">
+                                <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Username" value="<?=$list_user->user_name?>" readonly="readonly">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label for="password" class="col-sm-2 col-form-label">Password</label>
+                              <div class="col-sm-2">
+                                <input type="password" class="form-control" id="user_password" name="user_password" placeholder="New Password">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label for="level" class="col-sm-2 col-form-label">Level User</label>
+                              <div class="col-sm-2">
+                                <select class="form-control" id="user_level" name="user_level" >
+                                  <option value="1">Admin</option>
+                                  <option value="2">Kasir</option>
+                                </select>
                               </div>
                             </div>
                             <button type="submit" class="btn btn-success">SAVE</button>
-                            <a href="/point-of-sales/index.php/Controller_Kategori" class="btn btn-primary">BACK</a>
+                            <a href="/point-of-sales/index.php/Controller_User" class="btn btn-primary">BACK</a>
                             <?php
                               }
                             ?>

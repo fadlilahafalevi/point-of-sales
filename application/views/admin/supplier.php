@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>KATEGORI</title>
+  <title>SUPPLIER</title>
   <link rel="stylesheet" href="/point-of-sales/assets/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="/point-of-sales/assets/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="/point-of-sales/assets/css/vendor.bundle.base.css">
@@ -24,28 +24,32 @@
           <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">MASTER KATEGORI</h4>
-                  <a class="btn btn-success" href="/point-of-sales/index.php/Controller_Kategori/createKategori">CREATE</a>
+                  <h4 class="card-title">MASTER SUPPLIER</h4>
+                  <a class="btn btn-success" href="/point-of-sales/index.php/Controller_Supplier/createSupplier">CREATE</a>
                   <div class="table-responsive pt-3">
                     <table class="table table-bordered data-table">
                       <thead>
                         <tr>
-                          <th>Kode Kategori</th>
-                          <th>Nama Kategori</th>
+                          <th>Kode Supplier</th>
+                          <th>Nama Supplier</th>
+                          <th>Alamat Supplier</th>
+                          <th>No. Telp Supplier</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php 
                           $no=0;
-                          foreach ($data as $list_kategori){
+                          foreach ($data as $list_supplier){
                           $no++;
                         ?>
                           <tr>
-                              <td><?=$list_kategori->kategori_id?></td>
-                              <td><?=$list_kategori->kategori_nama?></td>
+                              <td><?=$list_supplier->supplier_id?></td>
+                              <td><?=$list_supplier->supplier_nama?></td>
+                              <td><?=$list_supplier->supplier_alamat?></td>
+                              <td><?=$list_supplier->supplier_notelp?></td>
                               <td>
-                                <a class="btn btn-warning" href="/point-of-sales/index.php/Controller_Kategori/updateKategori/<?=$list_kategori->kategori_id?>" data-toggle="tooltip" title="Edit" style="padding: 4px">
+                                <a class="btn btn-warning" href="/point-of-sales/index.php/Controller_Supplier/updateSupplier/<?=$list_supplier->supplier_id?>" data-toggle="tooltip" title="Edit" style="padding: 4px">
                                   <i class="mdi mdi-pencil-box-outline"></i>
                                 </a>
                               </td>

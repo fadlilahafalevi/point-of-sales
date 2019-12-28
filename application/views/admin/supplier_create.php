@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>KATEGORI</title>
+  <title>SUPPLIER</title>
   <link rel="stylesheet" href="/point-of-sales/assets/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="/point-of-sales/assets/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="/point-of-sales/assets/css/vendor.bundle.base.css">
@@ -24,32 +24,33 @@
           <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">MASTER KATEGORI</h4>
+                  <h4 class="card-title">INSERT MASTER SUPPLIER</h4>
                   <div>
                     <table>
                       <tbody>
-                        <?php
-                          foreach ($data as $list_kategori) {
-                      	?>
                         <div>
-                          <form method="POST" action="<?php echo base_url().'Controller_Kategori/updateKategoriCommit'; ?>" class="forms-sample">
+                          <form method="POST" action="<?php echo base_url().'Controller_Supplier/createSupplierCommit'; ?>" class="forms-sample">
                             <div class="form-group row">
-                              <label for="exampleInputUsername2" class="col-sm-2 col-form-label">Kode Kategori</label>
-                              <div class="col-sm-1">
-                                <input type="text" class="form-control" id="kategori_id" name="kategori_id" placeholder="Kode Kategori" value="<?=$list_kategori->kategori_id?>" readonly="readonly">
+                              <label for="exampleInputUsername2" class="col-sm-2 col-form-label">Nama Supplier</label>
+                              <div class="col-sm-2">
+                                <input type="text" class="form-control" id="supplier_nama" name="supplier_nama" placeholder="Nama Supplier" required="required">
+                              </div>
+                            </div>
+                            </div>
+                            <div class="form-group row">
+                              <label for="exampleInputUsername2" class="col-sm-2 col-form-label">Alamat Supplier</label>
+                              <div class="col-sm-2">
+                                <input type="text" class="form-control" id="supplier_alamat" name="supplier_alamat" placeholder="Alamat Supplier" required="required">
                               </div>
                             </div>
                             <div class="form-group row">
-                              <label for="exampleInputUsername2" class="col-sm-2 col-form-label">Nama Kategori</label>
+                              <label for="exampleInputUsername2" class="col-sm-2 col-form-label">No. Telp Supplier</label>
                               <div class="col-sm-2">
-                                <input type="text" class="form-control" id="kategori_nama" name="kategori_nama" placeholder="Nama Kategori" value="<?=$list_kategori->kategori_nama?>">
+                                <input type="text" class="form-control" id="supplier_notelp" name="supplier_notelp" placeholder="No. Telp Supplier" required="required">
                               </div>
                             </div>
                             <button type="submit" class="btn btn-success">SAVE</button>
-                            <a href="/point-of-sales/index.php/Controller_Kategori" class="btn btn-primary">BACK</a>
-                            <?php
-                              }
-                            ?>
+                            <a href="/point-of-sales/index.php/Controller_Supplier" class="btn btn-primary">BACK</a>
                       </tbody>
                     </table>
                   </div>
