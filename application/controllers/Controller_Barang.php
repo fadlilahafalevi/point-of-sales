@@ -12,27 +12,21 @@ class Controller_Barang extends CI_Controller{
 	public function index(){
         $this->load->model('M_Barang');
 
-		if ($this->session->userdata('akses') == '1') {
-			$data['data'] = $this->M_Barang->getAllBarang();
-			$this->load->view('admin/barang', $data);
-		} else {
-			echo "Halaman tidak ditemukan";
-		}
+		$data['data'] = $this->M_Barang->getAllBarang();
+		$this->load->view('admin/barang', $data);
 	}
 
 	public function getBarangDetailByID($id = '') {
 		$this->load->model("M_Barang");
 		$this->load->model("M_Kategori");
 
-		if ($this->session->userdata('akses') == '1') {
-			$data['id'] = $id;
-			if (isset($id)) {
-				$data['data'] = $this->M_Barang->getBarangDetailByID($id);
-				$data['kategori'] = $this->M_Kategori->getAllKategori();
-			}
-
-			$this->load->view('admin/barang_detail', $data);
+		$data['id'] = $id;
+		if (isset($id)) {
+			$data['data'] = $this->M_Barang->getBarangDetailByID($id);
+			$data['kategori'] = $this->M_Kategori->getAllKategori();
 		}
+
+		$this->load->view('admin/barang_detail', $data);
 	}
 
 	public function updateBarangForm($id = '') {

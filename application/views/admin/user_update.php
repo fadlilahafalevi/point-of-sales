@@ -55,8 +55,16 @@
                               <label for="level" class="col-sm-2 col-form-label">Level User</label>
                               <div class="col-sm-2">
                                 <select class="form-control" id="user_level" name="user_level" >
-                                  <option value="1">Admin</option>
-                                  <option value="2">Kasir</option>
+                                    <?php
+                                        if($list_user->user_id === "1") { ?>
+                                          <option value="1" selected="true">Admin</option>
+                                          <option value="2">Kasir</option>
+                                        <?php } else if($list_user->user_id === "2") { ?>
+                                          <option value="1">Admin</option>
+                                          <option value="2" selected="true">Kasir</option>
+                                    <?php
+                                        }
+                                    ?>
                                 </select>
                               </div>
                             </div>

@@ -68,12 +68,21 @@
                                  <a class="btn btn-warning" href="/point-of-sales/index.php/Controller_User/updateUser/<?=$list_user->user_id?>" data-toggle="tooltip" title="Edit" style="padding: 4px">
                                   <i class="mdi mdi-pencil-box-outline"></i>
                                 </a>
-                                <a class="btn btn-danger" href="/point-of-sales/index.php/Controller_User/inactivateUser/<?=$list_user->user_id?>" data-toggle="tooltip" title="Inactive" style="padding: 4px">
-                                  <i class="mdi mdi-account-remove"></i>
-                                </a>
-                                <a class="btn btn-primary" href="/point-of-sales/index.php/Controller_User/activateUser/<?=$list_user->user_id?>" data-toggle="tooltip" title="Activate" style="padding: 4px">
-                                  <i class="mdi mdi-account-plus"></i>
-                                </a>
+                                <?php
+                                  if($list_user->user_status == '1'){
+                                ?>
+                                  <a class="btn btn-danger" href="/point-of-sales/index.php/Controller_User/inactivateUser/<?=$list_user->user_id?>" data-toggle="tooltip" title="Inactive" style="padding: 4px">
+                                    <i class="mdi mdi-account-remove"></i>
+                                  </a>
+                                <?php
+                                  } elseif($list_user->user_status == '0'){ 
+                                ?>
+                                  <a class="btn btn-primary" href="/point-of-sales/index.php/Controller_User/activateUser/<?=$list_user->user_id?>" data-toggle="tooltip" title="Activate" style="padding: 4px">
+                                    <i class="mdi mdi-account-plus"></i>
+                                  </a>
+                                <?php
+                                  }
+                                ?>
                               </td>
                           </tr>
                         <?php

@@ -27,11 +27,7 @@ class M_Penjualan extends CI_Model{
 			);
 			$this->db->insert('tbl_detail_jual',$data_to_insert);
 
-			$data_to_update = array(
-	            "barang_stok" 			 => $item['qty']
-	        );
-			$this->db->where('barang_id', $item['id']);
-	        $this->db->update('tbl_barang', $data_to_update);
+			$this->db->query("update tbl_barang set barang_stok = barang_stok-'$item[qty]', barang_tgl_last_update = NOW() where barang_id = '$item[id]'");
 		}
 		return true;
 	}

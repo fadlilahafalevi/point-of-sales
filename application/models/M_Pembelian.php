@@ -23,14 +23,8 @@ class M_Pembelian extends CI_Model{
 			);
 			$this->db->insert('tbl_detail_beli',$data_to_insert);
 
-			$data_to_update = array(
-	            "barang_stok" 			 => $item['qty'],
-	            "barang_harpok"			 => $item['price'],
-	            "barang_harjul"          => $item['harga'],
-	            "barang_tgl_last_update" => 'NOW()'
-	        );
-			$this->db->where('barang_id', $item['id']);
-	        $this->db->update('tbl_barang', $data_to_update);
+
+			$this->db->query("update tbl_barang set barang_stok = barang_stok+'$item[qty]', barang_tgl_last_update = NOW() where barang_id = '$item[id]'");
 		}
 		return true;
 	}

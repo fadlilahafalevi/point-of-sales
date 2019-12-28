@@ -51,12 +51,18 @@
           <span class="menu-title">Kategori</span>
         </a>
       </li>
+      <?php
+        }
+      ?>
       <li class="nav-item">
         <a class="nav-link" href="/point-of-sales/index.php/Controller_Barang">
           <i class="mdi mdi-cube menu-icon"></i>
           <span class="menu-title">Barang</span>
         </a>
       </li>
+      <?php
+        if($this->session->userdata('akses')=='1'){
+      ?>
       <li class="nav-item">
         <a class="nav-link" href="/point-of-sales/index.php/Controller_User">
           <i class="mdi mdi-account menu-icon"></i>

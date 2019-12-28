@@ -49,7 +49,7 @@ class Controller_Login extends CI_Controller{
 
     function login_failed(){
         $url=base_url('Controller_Login');
-        echo $this->session->set_flashdata('msg','Username atau Password Salah');
+        echo $this->session->set_flashdata('msg','Username atau Password Salah / User Inactive');
         redirect($url);
     }
 
